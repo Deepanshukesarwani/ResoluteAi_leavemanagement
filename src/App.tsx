@@ -1,20 +1,18 @@
 // import { useState } from 'react'
-import { BrowserRouter,Route,Routes } from "react-router-dom";
-import Loginpage from './pages/login/login-page';
-import Dashboard from './pages/dashboard/dashboard';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Loginpage from "./pages/login/login-page";
+import Dashboard from "./pages/dashboard/dashboard";
+import RoutesProvider from "./routes/index.routes";
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-  <>
- <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Loginpage/>}></Route>
-      <Route path='/dashboard' element={<Dashboard/>}></Route>
-    </Routes>
-    </BrowserRouter>
-  </>
-  )
+    <>
+      <BrowserRouter>
+        <RoutesProvider />
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;
