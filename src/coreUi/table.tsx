@@ -52,7 +52,9 @@ export default function StickyHeadTable() {
   };
 
   return (
-    <Box sx={{margin:"1rem 1rem 1rem 1rem"}}>
+    <Box 
+    sx={{margin:"1rem 1rem 1rem 1rem"}}
+    >
 
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
