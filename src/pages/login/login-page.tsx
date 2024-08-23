@@ -11,10 +11,12 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {
+  //  createTheme,
+    ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom'; // Don't forget to import useNavigate!
 
-const theme = createTheme();
+// const theme = createTheme();
 
 const LoginPage: React.FC = () => {
   const theme = useTheme();

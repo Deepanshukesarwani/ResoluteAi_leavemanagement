@@ -40,7 +40,9 @@
 
 import React from 'react';
 import Box from '@mui/material/Box';
-import { NAV, HEADER } from '../components/config-header-sidebar';
+import { 
+  // NAV, 
+  HEADER } from '../components/config-header-sidebar';
 
 type MainProps = {
   children: React.ReactNode;
