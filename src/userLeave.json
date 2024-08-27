@@ -1,0 +1,92 @@
+{
+    "type": "object",
+    "properties": {
+      "userId": {
+        "type": "string",
+        "description": "Unique identifier for the user"
+      },
+      "year": {
+        "type": "number",
+        "description": "Year for which the leave data is being tracked"
+      },
+      "leaves": {
+        "type": "object",
+        "properties": {
+          "annualLeave": {
+            "type": "object",
+            "properties": {
+              "credit": { "type": "number", "default": 0 },
+              "used": { "type": "number", "default": 0 },
+              "remaining": { "type": "number", "default": 0 }
+            },
+            "required": ["credit", "used", "remaining"]
+          },
+          "healthLeave": {
+            "type": "object",
+            "properties": {
+              "credit": { "type": "number", "default": 0 },
+              "used": { "type": "number", "default": 0 },
+              "remaining": { "type": "number", "default": 0 }
+            },
+            "required": ["credit", "used", "remaining"]
+          },
+          "studyLeave": {
+            "type": "object",
+            "properties": {
+              "credit": { "type": "number", "default": 0 },
+              "used": { "type": "number", "default": 0 },
+              "remaining": { "type": "number", "default": 0 }
+            },
+            "required": ["credit", "used", "remaining"]
+          },
+          "familyLeave": {
+            "type": "object",
+            "properties": {
+              "credit": { "type": "number", "default": 0 },
+              "used": { "type": "number", "default": 0 },
+              "remaining": { "type": "number", "default": 0 }
+            },
+            "required": ["credit", "used", "remaining"]
+          },
+          "paternityLeave": {
+            "type": "object",
+            "properties": {
+              "credit": { "type": "number", "default": 0 },
+              "used": { "type": "number", "default": 0 },
+              "remaining": { "type": "number", "default": 0 }
+            },
+            "required": ["credit", "used", "remaining"]
+          },
+          "maternityLeave": {
+            "type": "object",
+            "properties": {
+              "credit": { "type": "number", "default": 0 },
+              "used": { "type": "number", "default": 0 },
+              "remaining": { "type": "number", "default": 0 }
+            },
+            "required": ["credit", "used", "remaining"]
+          },
+          "unpaidLeave": {
+            "type": "object",
+            "properties": {
+              "credit": { "type": "number", "default": 0 },
+              "used": { "type": "number", "default": 0 },
+              "remaining": { "type": "number", "default": 0 }
+            },
+            "required": ["credit", "used", "remaining"]
+          }
+        },
+        "required": [
+          "annualLeave",
+          "healthLeave",
+          "studyLeave",
+          "familyLeave",
+          "paternityLeave",
+          "maternityLeave",
+          "unpaidLeave"
+        ]
+      }
+    },
+    "required": ["userId", "year", "leaves"]
+  }
+  

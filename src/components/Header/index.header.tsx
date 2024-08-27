@@ -63,8 +63,8 @@ export default function Header() {
           {/* here we have to add accountMenu for logout option  */}
 
          <Toolbar sx={{ justifyContent: '',}}>
-        <Typography variant="h6" noWrap sx={{color:"red"}}>
-          Welcome, Deepanshu
+        <Typography variant="h6" noWrap sx={{color: (theme) => theme.palette.text.primary,}}>
+           Deepanshu
         </Typography>
 
         <IconButton edge="end" onClick={handleMenu}>

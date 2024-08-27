@@ -1,20 +1,31 @@
-import { useState } from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, IconButton, Box } from '@mui/material';
-import { Home, People, Settings, Menu } from '@mui/icons-material';
-import { styled } from '@mui/material/styles';
-
-import { NAV, HEADER } from '../config-header-sidebar';
-
+import
+//  React,
+ { useState } from "react";
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  IconButton,
+  Box,
+} from "@mui/material";
+import { Home, People, Settings, Menu } from "@mui/icons-material";
+import { styled } from "@mui/material/styles";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { NAV, HEADER } from "../config-header-sidebar";
+import MyApp from "../DarkMode/DarkMode.com";
 const Sidebar = styled(Drawer)(({ theme, open }) => ({
   width: open ? NAV.WIDTH : 60, // Adjusted width based on open state
   flexShrink: 0,
   [`& .MuiDrawer-paper`]: {
     width: open ? NAV.WIDTH : 60,
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
     backgroundColor: theme.palette.background.paper,
     color: theme.palette.text.primary,
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
+    overflowX: "hidden",
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -23,14 +34,20 @@ const Sidebar = styled(Drawer)(({ theme, open }) => ({
 
 export default function SideBar() {
   const [open, setOpen] = useState(true);
-  const [activePage, setActivePage] = useState('EmployeeLeave');
+  // const [activePage, setActivePage] = useState('EmployeeLeave');
+
+  const navigate = useNavigate();
+  const params = useParams();
+  const location = useLocation();
 
   const handleToggle = () => {
     setOpen(!open);
   };
 
-  const handleNavigation = (page:any) => {
-    setActivePage(page);
+  const handleNavigation = (page: any) => {
+    // setActivePage(page);
+    console.log(params);
+    console.log(location);
     // Add your navigation logic here, e.g., using react-router's useNavigate
   };
 
@@ -38,87 +55,98 @@ export default function SideBar() {
     <Sidebar variant="permanent" open={open} anchor="left">
       <Toolbar
         sx={{
-          display: 'flex',
-          justifyContent: open ? 'flex-end' : 'center',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: open ? "flex-end" : "center",
+          alignItems: "center",
           // backgroundColor: 'red',
-          padding: open ? '0 16px' : '0',
+          padding: open ? "0 16px" : "0",
         }}
       >
-        <IconButton onClick={handleToggle} sx={{ color: 'grey' }}>
+        <IconButton onClick={handleToggle} sx={{
+           color: (theme) => theme.palette.text.primary,
+            }}>
           <Menu />
         </IconButton>
       </Toolbar>
       {open ? (
         <Box
           sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
             height: HEADER.HEIGHT,
-            backgroundColor: 'white',
+            // backgroundColor: "white",
           }}
         >
-          <img src="/resoluteLogo.webp" alt="Resolute AI" style={{ width: '100%', maxWidth: '180px', padding: '10px' }} />
+          <img
+            src="/resoluteLogo.webp"
+            alt="Resolute AI"
+            style={{ width: "100%", maxWidth: "180px", padding: "10px" }}
+          />
         </Box>
-      ):(<Box 
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: HEADER.HEIGHT,
-          backgroundColor: 'white',
-        }}>
-          <img src="/ResoluteAI_logo.png" alt="resoluteLogo" style={{ width: '100%', maxWidth: '180px', padding: '10px' }} />
-      </Box>)}
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: HEADER.HEIGHT,
+            backgroundColor: "white",
+          }}
+        >
+          <img
+            src="/ResoluteAI_logo.png"
+            alt="resoluteLogo"
+            style={{ width: "100%", maxWidth: "180px", padding: "10px" }}
+          />
+        </Box>
+      )}
       <List>
-        <ListItem
-          button
-          onClick={() => handleNavigation('EmployeeLeave')}
+        <Box
           sx={{
-            backgroundColor: activePage === 'EmployeeLeave' ? 'rgba(245, 39, 24)' : 'inherit',
-            '&:hover': {
-              backgroundColor: 'rgba(242, 102, 92)',
-            },
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "column",
+            minHeight: "70vh",
           }}
         >
-          <ListItemIcon>
-            <Home />
-          </ListItemIcon>
-          {open && <ListItemText primary="Employee's Leave" />}
-        </ListItem>
+          <Box
+          >
+            <ListItem
+              button
+              onClick={() => navigate("userDashboard")}
+            >
+              <ListItemIcon>
+                <Home />
+              </ListItemIcon>
+              {open && <ListItemText primary="User Dashboard" />}
+            </ListItem>
 
-        <ListItem
-          button
-          onClick={() => handleNavigation('LeaveManagement')}
-          sx={{
-            backgroundColor: activePage === 'LeaveManagement' ? 'rgba(245, 39, 24)' : 'inherit',
-            '&:hover': {
-              backgroundColor: 'rgba(242, 102, 92)',
-            },
-          }}
-        >
-          <ListItemIcon>
-            <People />
-          </ListItemIcon>
-          {open && <ListItemText primary="Leave Management" />}
-        </ListItem>
+            <ListItem
+              button
+              onClick={() => navigate("dashboard")}
+            >
+              <ListItemIcon>
+                <People />
+              </ListItemIcon>
+              {open && <ListItemText primary="Leave Management" />}
+            </ListItem>
 
-        <ListItem
-          button
-          onClick={() => handleNavigation('AdminManagement')}
-          sx={{
-            backgroundColor: activePage === 'AdminManagement' ? 'rgba(245, 39, 24)' : 'inherit',
-            '&:hover': {
-              backgroundColor: 'rgba(242, 102, 92)',
-            },
-          }}
-        >
-          <ListItemIcon>
-            <Settings />
-          </ListItemIcon>
-          {open && <ListItemText primary="Admin Management" />}
-        </ListItem>
+            <ListItem
+              button
+              onClick={() => handleNavigation("AdminManagement")}
+            >
+              <ListItemIcon>
+                <Settings />
+              </ListItemIcon>
+              {open && <ListItemText primary="Admin Management" />}
+            </ListItem>
+          </Box>
+
+          <Box>
+            <MyApp/>
+          </Box>
+        </Box>
       </List>
     </Sidebar>
   );

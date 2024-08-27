@@ -1,48 +1,38 @@
-// import Box from "@mui/material/Box";
-// import React from "react";
-// import {NAV, HEADER} from "../components/config-header-sidebar"
-// import { useResponsive,isDesktopScreen } from "../hooks/use-responsive";
-// const SPACING = 16;
+// import React from 'react';
+// import Box from '@mui/material/Box';
+// import { 
+//   // NAV, 
+//   HEADER } from '../components/config-header-sidebar';
 
 // type MainProps = {
 //   children: React.ReactNode;
 //   sx?: any;
 // };
 
-// export default function Main({ children, sx, ...other }: MainProps){
-//     const lgUp = useResponsive("up", "lg");
-//     return (
-//         <Box
-//           component="main"
-//           sx={{
-//             flexGrow: 1,
-//             minHeight: 1,
-//             display: "flex",
-    
-//             flexDirection: "column",
-//             px: 2,
-//             py: `${HEADER.HEIGHT + SPACING}px`,
-//             ...(lgUp ? {
-//               px: 4,
-//               py: `${HEADER.HEIGHT + SPACING}px`,
-//               width: `calc(100% - ${NAV.WIDTH}px)`,
-//             } : {
-    
-//             }),
-//             ...sx,
-//           }}
-//           {...other}
-//         >
-//           {children}
-//         </Box>
-//       );
+// export default function Main({ children, sx, ...other }: MainProps) {
+//   return (
+//     <Box
+//       component="main"
+//       sx={{
+//         flexGrow: 1,
+//         minHeight: 1,
+//         display: 'flex',
+//         flexDirection: 'column',
+//         px: 2,
+//         py: `${HEADER.HEIGHT}px`,
+//         backgroundColor:"#f5f5f5",
+//         ...sx,
+//       }}
+//       {...other}
+//     >
+//       {children}
+//     </Box>
+//   );
 // }
 
 import React from 'react';
 import Box from '@mui/material/Box';
-import { 
-  // NAV, 
-  HEADER } from '../components/config-header-sidebar';
+import { HEADER } from '../components/config-header-sidebar';
 
 type MainProps = {
   children: React.ReactNode;
@@ -53,19 +43,21 @@ export default function Main({ children, sx, ...other }: MainProps) {
   return (
     <Box
       component="main"
-      sx={{
+      sx={(theme) => ({
         flexGrow: 1,
         minHeight: 1,
         display: 'flex',
         flexDirection: 'column',
         px: 2,
         py: `${HEADER.HEIGHT}px`,
-        // ml: `${NAV.WIDTH}px`,
+        backgroundColor: theme.palette.background.default,
+        color: theme.palette.text.primary,
         ...sx,
-      }}
+      })}
       {...other}
     >
       {children}
     </Box>
   );
 }
+
