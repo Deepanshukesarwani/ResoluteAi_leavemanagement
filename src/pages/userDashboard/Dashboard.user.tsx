@@ -71,7 +71,9 @@ export default function UserDashboard() {
             // bgcolor:"yellow"
           }}
         >
-          {AdminUser.map((data, index) => (
+          {AdminUser.map((data, 
+          // index
+        ) => (
             // <Grid item xs={12} sm={6} md={4} key={index}>
             // </Grid>
             <LeaveTable data={data} />

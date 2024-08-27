@@ -13,7 +13,9 @@ import {
 } from "@mui/material";
 import { Home, People, Settings, Menu } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, 
+  // useParams, useLocation
+ } from "react-router-dom";
 import { NAV, HEADER } from "../config-header-sidebar";
 import MyApp from "../DarkMode/DarkMode.com";
 const Sidebar = styled(Drawer)(({ theme, open }) => ({
@@ -37,19 +39,21 @@ export default function SideBar() {
   // const [activePage, setActivePage] = useState('EmployeeLeave');
 
   const navigate = useNavigate();
-  const params = useParams();
-  const location = useLocation();
+  // const params = useParams();
+  // const location = useLocation();
 
   const handleToggle = () => {
     setOpen(!open);
   };
 
-  const handleNavigation = (page: any) => {
-    // setActivePage(page);
-    console.log(params);
-    console.log(location);
-    // Add your navigation logic here, e.g., using react-router's useNavigate
-  };
+  // const handleNavigation = (
+  //   // page: any
+  // ) => {
+  //   // setActivePage(page);
+  //   console.log(params);
+  //   console.log(location);
+  //   // Add your navigation logic here, e.g., using react-router's useNavigate
+  // };
 
   return (
     <Sidebar variant="permanent" open={open} anchor="left">
@@ -134,7 +138,7 @@ export default function SideBar() {
 
             <ListItem
               button
-              onClick={() => handleNavigation("AdminManagement")}
+              // onClick={() => handleNavigation("AdminManagement")}
             >
               <ListItemIcon>
                 <Settings />
